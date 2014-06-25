@@ -1,0 +1,26 @@
+table.open_weather{
+	width: 100%;
+}
+table.open_weather,
+table.open_weather body,
+table.open_weather tr,
+table.open_weather td{
+	border: 0;
+}
+
+table.open_weather td:hover,
+table.open_weather tr:hover td,
+table.open_weather tr:hover{
+	background: transparent;
+}
+
+
+table.open_weather td {
+	text-align: center;
+}
+
+table.open_weather .label {
+	text-align: center;
+	font-size: 12px;
+	line-height: 16px;
+}

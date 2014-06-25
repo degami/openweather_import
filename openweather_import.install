@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function openweather_import_schema() {
+  $schema['open_weather_data'] = array(
+    'description' => '',
+    'fields' => array(
+        'created' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Creation Timestamp.',
+        ),
+        'language' => array(
+          'type' => 'varchar',
+          'length' => 12,
+          'default' => '',
+          'not null' => TRUE,
+        ),
+        'previsione_data' => array(
+          'type' => 'int',
+          'not null' => TRUE,
+        ),
+        'previsione_city_id' => array(
+          'type' => 'int',
+          'not null' => TRUE,
+        ),
+        'previsione_simbolo' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'previsione_cielo' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'previsione_temperatura' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'previsione_temperatura_min' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'previsione_temperatura_max' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'previsione_obj' => array(
+          'type' => 'text',
+          'not null' => TRUE,
+        ),
+
+    ),
+    'indexes' => array(
+      'data' => array('previsione_data'),
+    ),
+    'primary key' => array('previsione_city_id','previsione_data','language'),
+  );
+  return $schema;
+}
+
+
+/**
+ * Implements hook_install().
+ */
+function openweather_import_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function openweather_import_uninstall() {
+  drupal_uninstall_schema('open_weather_data');
+}
